@@ -1,0 +1,218 @@
+MY-SYS-CMD-MIB DEFINITIONS ::= BEGIN 
+IMPORTS 
+	enterprises, OBJECT-TYPE, MODULE-IDENTITY
+		FROM SNMPv2-SMI
+	DisplayString, INTEGER
+		FROM SNMPv2-TC;
+		
+	SystermInfo MODULE-IDENTITY ::= { enterprises 1002}
+	
+	RealTimeDate OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"日期格式：ddmmyy dd:日(01~31) mm:月(01~12) yy:年(00~99)  DAY=240316 (2016年03月24日)"
+	::= { SystermInfo 1 }
+
+    SystermTime OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"时间格式：hhmmss   hh:小时(00~23)  mm:分钟(00~59)  ss:秒(00~59)    TIME=134755(13时47分55秒)"
+	::= { SystermInfo 2 }
+
+    EbN0AlarmThreshold OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"Eb/N0  告警阈值，单位dB，分辨率: 0.1dB，范围：2~10dB   EBA=12.3"
+	::= { SystermInfo 3 }
+
+    FaultsAndStatus OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"返回设备当前最高优先级的故障和状态码，包括装置、发送、接收和ODU部分，格式：abcdef      设备针对已定义故障统一上报(各故障比特置位)"
+	::= { SystermInfo 4 }
+
+    RestartSettings OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"强制设备重新启动"
+	::= { SystermInfo 5 }
+
+    IPAddress OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"设置或查询设备的IP地址及其掩码位数，格式:xxx.xxx.xxx.xxx.yy    xxx.xxx.xxx.xxx: ip地址 yy:掩码位数(8~30)   IPA=192.168.003.021.24(LAN接口的IP地址)"
+	::= { SystermInfo 6 }
+
+    MACAddress OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"返回设备的MAC地址  ETM=8606C0340166(LAN接口MAC地址)"
+	::= { SystermInfo 7 }
+
+    WorkStatus OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0:PAMA应用(默认)   1:DAMA应用      TWD=0"
+	::= { SystermInfo 8 }
+
+    InnerTemp OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"返回设备内部温度，单位:摄氏度 格式:sxx    s:正负号 xx:绝对值   TMP=+46(设备内部46摄氏度)"
+	::= { SystermInfo 9 }
+
+    TestMode OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0: 正常模式(无测试)  1:中频环  2:数字环    3:I/O环   4:射频环  5:Tx CW   6:Tx Alternating1,0 Pattern   TST=1(设备进入中频环测试状态)
+            注：暂支持0/1/4/5   1/4表示接收通道参数自动跟随发射参数(正常模式后恢复)"
+    ::= { SystermInfo 10 }
+
+    SatIPAddress OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"SAT接口IP地址，格式:xxx.xxx.xxx.yy     xxx.xxx.xxx:IP地址(末段默认为ID+1)  yy:掩码位数(8~30)"
+	::= { SystermInfo 11 }
+
+    ForwardMode OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0:交换模式(默认) 1:路由模式"
+	::= { SystermInfo 12 }
+
+    DevID OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"取值范围:1~253"
+	::= { SystermInfo 13 }
+
+    EthInterfaceMode OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"1Bytes 0:1000M-BaseT/Auto 默认 1:100M-BaseT/Half  2:100M-BaseT/Full  3:10M-BaseT/Half  4:10M-BaseT/Full"
+	::= { SystermInfo 14 }
+
+    SaveCurCfgToFile OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"1byte  0~9共10个配置文件       CST=2"
+	::= { SystermInfo 15 }
+
+    SpecCfgFileRecover OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"1byte  0~9共10个配置文件       CLD=3"
+	::= { SystermInfo 16 }
+
+    SatRecvRate OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"7byte  单位kbps 精度100bps     SDR=00380.5(380.5kbps)"
+	::= { SystermInfo 17 }
+
+    SatSendRate OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"7byte  单位kbps 精度100bps     SDT=01500.5(1500.5kbps)"
+	::= { SystermInfo 18 }
+
+    LanRecvRate OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"7byte  单位kbps 精度100bps     LDR=0062.0(62kbps)"
+	::= { SystermInfo 19 }
+
+    LanSendRate OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"7byte  单位kbps 精度100bps     LDT=00135.0(135kbps)"
+	::= { SystermInfo 20 }
+
+    SoftVer OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"15byte 格式: aaa.bbb.ccc.ddd   aaa:V版本号  bbb:R版本号  ccc:C版本号  ddd:spc版本号    SWV:100.002.001.700(V100R002C001SPC700)"
+	::= { SystermInfo 21 }
+
+    HardVer OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"9byte 格式: a.bc.d.ef"
+	::= { SystermInfo 22 }
+
+    DevSN OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"9byte      DSN=120181203"
+	::= { SystermInfo 23 }
+
+    DevType OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"0:D350  1:D352 "
+	::= { SystermInfo 24 }
+
+    PRBSTest OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0:停止  1:启动     PBS=0"
+	::= { SystermInfo 25 }
+
+    PRBSTestResult OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"0:成功  1:失败     未停止测试时查询返回失败"
+	::= { SystermInfo 26 }
+END 

@@ -1,0 +1,41 @@
+MY-LNB-CMD-MIB DEFINITIONS ::= BEGIN 
+IMPORTS 
+	enterprises, OBJECT-TYPE, MODULE-IDENTITY
+		FROM SNMPv2-SMI
+	DisplayString, INTEGER
+		FROM SNMPv2-TC;
+		
+	LnbInfo MODULE-IDENTITY ::= { enterprises 1004}
+	
+	LnbVoltage OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"查询LNB 电压 格式：xx.xxx   值：0~30.0 如果当前无LNB供电，返回00.0     LDV=23.9(当前LNB 电压 23.9伏特)"
+	::= { LnbInfo 1 }
+
+    Lnb10M OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"BUC 10Mhz 频率参考     0：禁用  1：启用        LFR=0(LNB 10Mhz 参考被禁用)"
+	::= { LnbInfo 2 }
+
+    LnbLoFreq OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"LNB 接收LO 频率信息，格式xxxxxs    xxxxx:LO频率 范围3000~65000Mhz 全0表示禁用该信息  s:混频指示(+或-)  LLO=06000-(LNB LO 为6Ghz 高本振混频)"
+	::= { LnbInfo 3 }
+
+    LnbPowerCtl OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0:关闭  1:LNB 13V供电  2:LNB 18V供电   3:LNB 24V供电    LPC=1(LNB 13V供电)"
+	::= { LnbInfo 4 }
+END 

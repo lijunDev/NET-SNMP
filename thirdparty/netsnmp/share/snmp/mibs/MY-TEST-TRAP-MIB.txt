@@ -1,0 +1,24 @@
+MY-TEST-TRAP-MIB DEFINITIONS ::= BEGIN 
+IMPORTS 
+	enterprises, OBJECT-TYPE, MODULE-IDENTITY, NOTIFICATION-TYPE
+		FROM SNMPv2-SMI
+	DisplayString, INTEGER
+		FROM SNMPv2-TC;
+		
+	notification MODULE-IDENTITY ::= { enterprises 1005}
+	
+	NodeStatus OBJECT-TYPE
+		SYNTAX 			DisplayString
+		MAX-ACCESS 		read-only
+		STATUS          current 
+        DESCRIPTION     "node up notification"
+    ::= { notification 1 }
+
+    VerInfo OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"Example:   V1.0.0"
+	::= { notification 2 }
+END 

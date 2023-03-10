@@ -1,0 +1,19 @@
+MY-TEST-MIB DEFINITIONS ::= BEGIN 
+IMPORTS 
+	enterprises, OBJECT-TYPE, MODULE-IDENTITY
+		FROM SNMPv2-SMI
+	DisplayString
+		FROM SNMPv2-TC;
+		
+	Test MODULE-IDENTITY ::= { enterprises 9527}
+	
+	Time OBJECT IDENTIFIER ::= { Test 1 }
+	
+	GetTime OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"Example : 2022/12/08"
+	::= { Time 1 }
+END 

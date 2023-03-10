@@ -1,0 +1,41 @@
+MY-BUC-CMD-MIB DEFINITIONS ::= BEGIN 
+IMPORTS 
+	enterprises, OBJECT-TYPE, MODULE-IDENTITY
+		FROM SNMPv2-SMI
+	DisplayString, INTEGER
+		FROM SNMPv2-TC;
+		
+	BucInfo MODULE-IDENTITY ::= { enterprises 1003}
+	
+	BucVoltage OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"查询BUC 电压 格式：xx.xxx   值：0~64.0 如果当前无BUC供电，返回00.0     BDV=23.8(当前BUC DC电压 23.8伏特)"
+	::= { BucInfo 1 }
+
+    Buc10M OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"BUC 10Mhz 频率参考     0：禁用  1：启用        BFR=0(BUC 10Mhz 参考被禁用)"
+	::= { BucInfo 2 }
+
+    BucLoFreq OBJECT-TYPE
+		SYNTAX DisplayString 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"BUC 发送LO 频率信息，格式xxxxxs    xxxxx:LO频率 范围3000~65000Mhz 全0表示禁用该信息  s:混频指示(+或-)  BLO=12000+(BUC LO 为12Ghz 低本振混频)"
+	::= { BucInfo 3 }
+
+    BucPowerCtl OBJECT-TYPE
+		SYNTAX INTEGER 
+		MAX-ACCESS read-write
+		STATUS current
+		DESCRIPTION
+			"0:关闭 BUC 直流电源 1:打开 BUC 直流电源    BPC=0"
+	::= { BucInfo 4 }
+END 

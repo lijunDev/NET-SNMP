@@ -1,0 +1,28 @@
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 90: Warning: Unknown token: proc.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 92: Warning: Unknown token: proc.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 94: Warning: Unknown token: proc.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 104: Warning: Unknown token: disk.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 105: Warning: Unknown token: disk.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 106: Warning: Unknown token: includeAllDisks.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 116: Warning: Unknown token: load.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 143: Warning: Unknown token: iquerySecName.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 146: Warning: Unknown token: defaultMonitors.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 148: Warning: Unknown token: linkUpDownNotifications.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 160: Warning: Unknown token: extend.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 161: Warning: Unknown token: extend-sh.
+/home/lijun/net-snmp-5.9.3/out/share/snmp/snmpd.conf: line 193: Warning: Unknown token: master.
+../share/snmp/snmpd.conf: line 90: Warning: Unknown token: proc.
+../share/snmp/snmpd.conf: line 92: Warning: Unknown token: proc.
+../share/snmp/snmpd.conf: line 94: Warning: Unknown token: proc.
+../share/snmp/snmpd.conf: line 104: Warning: Unknown token: disk.
+../share/snmp/snmpd.conf: line 105: Warning: Unknown token: disk.
+../share/snmp/snmpd.conf: line 106: Warning: Unknown token: includeAllDisks.
+../share/snmp/snmpd.conf: line 116: Warning: Unknown token: load.
+../share/snmp/snmpd.conf: line 143: Warning: Unknown token: iquerySecName.
+../share/snmp/snmpd.conf: line 146: Warning: Unknown token: defaultMonitors.
+../share/snmp/snmpd.conf: line 148: Warning: Unknown token: linkUpDownNotifications.
+../share/snmp/snmpd.conf: line 160: Warning: Unknown token: extend.
+../share/snmp/snmpd.conf: line 161: Warning: Unknown token: extend-sh.
+../share/snmp/snmpd.conf: line 193: Warning: Unknown token: master.
+Error opening specified endpoint "udp:161"
+Server Exiting with code 1
